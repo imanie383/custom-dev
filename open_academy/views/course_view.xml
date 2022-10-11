@@ -1,5 +1,5 @@
 <odoo>
-    <record model="ir.actions.act_window" id="action_list_course">
+    <record id="action_list_course" model="ir.actions.act_window">
         <field name="name">Courses</field>
         <field name="res_model">open_academy.course</field>
         <field name="view_mode">tree,form</field>
@@ -8,7 +8,7 @@
     <menuitem id="menu_root" name="Open Academy"/>
     <menuitem id="course" parent="menu_root" name="Courses" sequence="10" action="action_list_course"/>
     
-    <record model="ir.ui.view" id="view_course_tree">
+    <record id="view_course_tree" model="ir.ui.view">
         <field name="name">view.course.tree</field>
         <field name="model">open_academy.course</field>
         <field name="priority" eval="16"/>
@@ -21,7 +21,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_course_form">
+    <record id="view_course_form" model="ir.ui.view">
         <field name="name">view.course.form</field>
         <field name="model">open_academy.course</field>
         <field name="priority" eval="16"/>
@@ -41,4 +41,17 @@
             </form>
         </field>
     </record>
+
+    <record id="view_course_search" model="ir.ui.view">
+        <field name="name">view.course.search</field>
+        <field name="model">open_academy.course</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="title"/>
+                <field name="description"/>
+            </search>
+        </field>
+    </record>
+
 </odoo>
