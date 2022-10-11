@@ -1,0 +1,26 @@
+<odoo>
+    <record model="open_academy.course" id="record0">
+        <field name="title">Course 0</field>
+        <field name="description">The course 0 description</field>
+    </record>
+    
+    <record model="open_academy.course" id="record1">
+        <field name="title">Course 1</field>
+        <field name="description">The course 1 description</field>
+    </record>
+    
+    <record model="open_academy.course" id="record2">
+        <field name="title">Course 2</field>
+        <field name="description">The course 2 description</field>
+    </record>
+    
+    <record model="open_academy.course" id="record3">
+        <field name="title">Course 3</field>
+        <field name="description">The course 3 description</field>
+    </record>
+    
+    <record model="open_academy.course" id="record4">
+        <field name="title">Course 4</field>
+        <field name="description">The course 4 description</field>
+    </record>
+</odoo>

@@ -31,5 +31,6 @@
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
+        'demo/course_demo.xml',
     ],
 }
