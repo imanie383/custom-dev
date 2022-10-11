@@ -1,0 +1,25 @@
+<odoo>
+    <record id="action_list_partner" model="ir.actions.act_window">
+        <field name="name">Partners</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="partner" parent="menu_root" name="Partners" sequence="10" action="action_list_partner"/>
+
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">view.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page string="Instructor">
+                    <group>
+                        <field name="instructor"/>
+                        <field name="sessions"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
