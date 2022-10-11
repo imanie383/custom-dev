@@ -9,3 +9,4 @@ class Course(models.Model):
     description = fields.Text()
 
     responsible = fields.Many2one('res.users')
+    sessions = fields.One2many('open_academy.session', 'course')
