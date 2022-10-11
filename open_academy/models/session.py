@@ -12,3 +12,4 @@ class Session(models.Model):
 
     instructor = fields.Many2one('res.partner')
     course = fields.Many2one('open_academy.course')
+    attendees = fields.Many2many('res.partner')

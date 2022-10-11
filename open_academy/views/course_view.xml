@@ -17,6 +17,7 @@
             <tree name="course">
                 <field name="title"/>
                 <field name="description"/>
+                <field name="responsible"/>
             </tree>
         </field>
     </record>
@@ -31,10 +32,14 @@
                 <sheet>
                     <group>                
                         <field name="title"/>
+                        <field name="responsible"/>
                     </group>
                     <notebook>
                         <page string="Description" name="description">
                             <field name="description"/>
+                        </page>
+                        <page string="Sessions">
+                            <field name="sessions"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -50,6 +55,7 @@
             <search>
                 <field name="title"/>
                 <field name="description"/>
+                <field name="responsible"/>
             </search>
         </field>
     </record>
