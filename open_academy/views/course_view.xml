@@ -21,4 +21,24 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_course_form">
+        <field name="name">view.course.form</field>
+        <field name="model">open_academy.course</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <!-- view content: <form>, <tree>, <graph>, ... -->
+            <form string="Course Form">
+                <sheet>
+                    <group>                
+                        <field name="title"/>
+                    </group>
+                    <notebook>
+                        <page string="Description" name="description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>
