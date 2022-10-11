@@ -9,3 +9,6 @@ class Session(models.Model):
     start_date = fields.Date()
     duration = fields.Float()
     seats = fields.Integer()
+
+    instructor = fields.Many2one('res.partner')
+    course = fields.Many2one('open_academy.course')
