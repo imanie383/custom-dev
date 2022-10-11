@@ -5,6 +5,20 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="open_academy.menu_root" name="Courses" sequence="10"
-        action="action_list_course"/>
+    <menuitem id="menu_root" name="Open Academy"/>
+    <menuitem id="course" parent="menu_root" name="Courses" sequence="10" action="action_list_course"/>
+    
+    <record model="ir.ui.view" id="view_course_tree">
+        <field name="name">view.course.tree</field>
+        <field name="model">open_academy.course</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <!-- view content: <form>, <tree>, <graph>, ... -->
+            <tree name="course">
+                <field name="title"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
 </odoo>
