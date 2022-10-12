@@ -27,3 +27,11 @@ class Session(models.Model):
             else:
                 percentage = (100 * attendees) / seats
             record.taken_seats = percentage
+
+    @api.onchange('seats', 'attendees')
+    def _onchange_seats(self):
+        if self.seats < 0:
+            return {'warning': {'title': 'Warning', 'message': 'Invalid number of seats'}}
+
+        if len(self.attendees) > self.seats:
+            return {'warning': {'title': 'Warning', 'message': 'Insufficient seats'}}
