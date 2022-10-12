@@ -11,7 +11,6 @@
     <record id="view_course_tree" model="ir.ui.view">
         <field name="name">view.course.tree</field>
         <field name="model">open_academy.course</field>
-        <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <tree name="course">
                 <field name="title"/>
@@ -24,7 +23,6 @@
     <record id="view_course_form" model="ir.ui.view">
         <field name="name">view.course.form</field>
         <field name="model">open_academy.course</field>
-        <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <form string="Course Form">
                 <sheet>
@@ -48,7 +46,6 @@
     <record id="view_course_search" model="ir.ui.view">
         <field name="name">view.course.search</field>
         <field name="model">open_academy.course</field>
-        <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <search>
                 <field name="title"/>
