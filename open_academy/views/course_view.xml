@@ -13,7 +13,6 @@
         <field name="model">open_academy.course</field>
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
-            <!-- view content: <form>, <tree>, <graph>, ... -->
             <tree name="course">
                 <field name="title"/>
                 <field name="description"/>
@@ -27,7 +26,6 @@
         <field name="model">open_academy.course</field>
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
-            <!-- view content: <form>, <tree>, <graph>, ... -->
             <form string="Course Form">
                 <sheet>
                     <group>                
