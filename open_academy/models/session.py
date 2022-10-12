@@ -10,6 +10,6 @@ class Session(models.Model):
     duration = fields.Float()
     seats = fields.Integer()
 
-    instructor = fields.Many2one('res.partner', domain="[('instructor', '=', 'True')]")
+    instructor = fields.Many2one('res.partner', domain="['|', ('instructor', '=', 'True'), ('category', '!=', False)]")
     course = fields.Many2one('open_academy.course')
     attendees = fields.Many2many('res.partner')
