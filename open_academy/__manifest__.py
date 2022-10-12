@@ -25,15 +25,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
         'views/course_view.xml',
         'views/session_view.xml',
         'views/partner_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
         'demo/course_demo.xml',
     ],
 }
