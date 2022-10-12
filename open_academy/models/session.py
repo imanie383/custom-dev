@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 
 
 class Session(models.Model):
@@ -35,3 +35,9 @@ class Session(models.Model):
 
         if len(self.attendees) > self.seats:
             return {'warning': {'title': 'Warning', 'message': 'Insufficient seats'}}
+
+    @api.constrains('instructor', 'attendees')
+    def _check_instructor(self):
+        for record in self:
+            if record.instructor in record.attendees:
+                raise exceptions.ValidationError("Instructor %s is attendeer in his/her own session" % record.instructor.name)
