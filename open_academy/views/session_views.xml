@@ -6,4 +6,43 @@
     </record>
 
     <menuitem id="session" parent="menu_root" name="Sessions" sequence="10" action="action_list_session"/>
+
+    <record id="view_session_tree" model="ir.ui.view">
+        <field name="name">view.session.tree</field>
+        <field name="model">open_academy.session</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree name="session">
+                <field name="name"/>
+                <field name="taken_seats" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_session_form" model="ir.ui.view">
+        <field name="name">view.session.form</field>
+        <field name="model">open_academy.session</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <form string="Session Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="instructor"/>
+                        <field name="start_date"/>
+                        <field name="duration"/>
+                        <field name="course"/>
+                        <field name="seats"/>
+                        <field name="taken_seats" widget="progressbar"/>
+                    </group>
+                    <notebook>
+                        <page string="Attendees" name="attendees">
+                            <field name="attendees"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
 </odoo>
