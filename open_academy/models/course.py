@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Course(models.Model):
@@ -14,3 +14,13 @@ class Course(models.Model):
 
     responsible = fields.Many2one('res.users')
     sessions = fields.One2many('open_academy.session', 'course')
+
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        new_default = {'title': "Copy of %s" % self.title}
+        if default is None:
+            default = new_default
+        else:
+            default.update(new_default)
+        new = super(models.Model, self).copy(default)
+        return new
