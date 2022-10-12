@@ -16,6 +16,7 @@
                 <page string="Instructor">
                     <group>
                         <field name="instructor"/>
+                        <field name="category"/>
                         <field name="sessions"/>
                     </group>
                 </page>
