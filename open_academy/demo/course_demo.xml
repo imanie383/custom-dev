@@ -1,25 +1,25 @@
 <odoo>
-    <record id="record0" model="open_academy.course">
+    <record id="record_0" model="open_academy.course">
         <field name="title">Course 0</field>
         <field name="description">The course 0 description</field>
     </record>
     
-    <record id="record1" model="open_academy.course">
+    <record id="record_1" model="open_academy.course">
         <field name="title">Course 1</field>
         <field name="description">The course 1 description</field>
     </record>
     
-    <record id="record2" model="open_academy.course">
+    <record id="record_2" model="open_academy.course">
         <field name="title">Course 2</field>
         <field name="description">The course 2 description</field>
     </record>
     
-    <record id="record3" model="open_academy.course">
+    <record id="record_3" model="open_academy.course">
         <field name="title">Course 3</field>
         <field name="description">The course 3 description</field>
     </record>
     
-    <record id="record4" model="open_academy.course">
+    <record id="record_4" model="open_academy.course">
         <field name="title">Course 4</field>
         <field name="description">The course 4 description</field>
     </record>
