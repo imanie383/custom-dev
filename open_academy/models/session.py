@@ -6,9 +6,11 @@ class Session(models.Model):
     _description = 'Session model'
 
     name = fields.Char()
-    start_date = fields.Date()
+    start_date = fields.Date(default=fields.Date.today)
     duration = fields.Float()
     seats = fields.Integer()
+    active = fields.Boolean(default=True)
+
     taken_seats = fields.Float(compute='_compute_taken_seats')
 
     instructor = fields.Many2one('res.partner', domain="['|', ('instructor', '=', 'True'), ('category', '!=', False)]")
