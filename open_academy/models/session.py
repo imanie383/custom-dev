@@ -13,15 +13,15 @@ class Session(models.Model):
 
     taken_seats = fields.Float(compute='_compute_taken_seats')
 
-    instructor = fields.Many2one('res.partner', domain="['|', ('instructor', '=', 'True'), ('category', '!=', False)]")
-    course = fields.Many2one('open_academy.course')
-    attendees = fields.Many2many('res.partner')
-    attendees_count = fields.Integer(compute='_compute_attendes_count', store=True, readonly=True)
+    instructor_id = fields.Many2one('res.partner', domain="['|', ('instructor', '=', 'True'), ('category', '!=', False)]")
+    course_id = fields.Many2one('open_academy.course')
+    attendee_ids = fields.Many2many('res.partner')
+    attendee_count = fields.Integer(compute='_compute_attendee_count', store=True, readonly=True)
 
-    @api.depends('seats', 'attendees')
+    @api.depends('seats', 'attendee_ids')
     def _compute_taken_seats(self):
         for record in self:
-            attendees = len(record.attendees)
+            attendees = len(record.attendee_ids)
             seats = record.seats
             if attendees >= seats or seats == 0:
                 percentage = 100
@@ -29,21 +29,21 @@ class Session(models.Model):
                 percentage = (100 * attendees) / seats
             record.taken_seats = percentage
 
-    @api.depends('attendees')
-    def _compute_attendes_count(self):
+    @api.depends('attendee_ids')
+    def _compute_attendee_count(self):
         for record in self:
-            record.attendees_count = len(record.attendees)
+            record.attendee_count = len(record.attendee_ids)
 
-    @api.onchange('seats', 'attendees')
+    @api.onchange('seats', 'attendee_ids')
     def _onchange_seats(self):
         if self.seats < 0:
             return {'warning': {'title': 'Warning', 'message': 'Invalid number of seats'}}
 
-        if len(self.attendees) > self.seats:
+        if len(self.attendee_ids) > self.seats:
             return {'warning': {'title': 'Warning', 'message': 'Insufficient seats'}}
 
-    @api.constrains('instructor', 'attendees')
+    @api.constrains('instructor', 'attendee_ids')
     def _check_instructor(self):
         for record in self:
-            if record.instructor in record.attendees:
-                raise exceptions.ValidationError("Instructor %s is attendeer in his/her own session" % record.instructor.name)
+            if record.instructor_id in record.attendee_ids:
+                raise exceptions.ValidationError("Instructor %s is attendee in his/her own session" % record.instructor.name)

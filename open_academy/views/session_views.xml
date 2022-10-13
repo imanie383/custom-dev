@@ -28,16 +28,16 @@
                     <group>
                         <field name="name"/>
                         <field name="active"/>
-                        <field name="instructor"/>
+                        <field name="instructor_id" string="Instructor"/>
                         <field name="start_date"/>
                         <field name="duration"/>
-                        <field name="course"/>
+                        <field name="course_id" string="Course"/>
                         <field name="seats"/>
                         <field name="taken_seats" widget="progressbar"/>
                     </group>
                     <notebook>
-                        <page string="Attendees" name="attendees">
-                            <field name="attendees"/>
+                        <page string="Attendees">
+                            <field name="attendee_ids"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -49,7 +49,7 @@
         <field name="name">view.session.calendar</field>
         <field name="model">open_academy.session</field>
         <field name="arch" type="xml">
-            <calendar date_start="start_date" color="course">
+            <calendar date_start="start_date" color="course_id">
                 <field name="name"/>
             </calendar>
         </field>
@@ -59,7 +59,7 @@
         <field name="name">view.session.gantt</field>
         <field name="model">open_academy.session</field>
         <field name="arch" type="xml">
-            <gantt date_start="start_date" date_stop="start_date" default_group_by="instructor"/>
+            <gantt date_start="start_date" date_stop="start_date" default_group_by="instructor_id"/>
         </field>
     </record>
 
@@ -68,8 +68,8 @@
         <field name="model">open_academy.session</field>
         <field name="arch" type="xml">
             <graph>
-                <field name="course"/>
-                <field name="attendees_count" type="measure"/>
+                <field name="course_id"/>
+                <field name="attendee_count" type="measure"/>
             </graph>
         </field>
     </record>
@@ -78,9 +78,9 @@
         <field name="name">view.session.kanban</field>
         <field name="model">open_academy.session</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="course">
+            <kanban default_group_by="course_id">
                 <field name="name"/>
-                <field name="course"/>
+                <field name="course_id"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
