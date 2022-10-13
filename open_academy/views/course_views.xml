@@ -14,9 +14,9 @@
         <field name="model">open_academy.course</field>
         <field name="arch" type="xml">
             <tree name="course">
-                <field name="title"/>
+                <field name="name"/>
                 <field name="description"/>
-                <field name="responsible"/>
+                <field name="responsible_id" string="Responsible"/>
             </tree>
         </field>
     </record>
@@ -28,15 +28,15 @@
             <form string="Course Form">
                 <sheet>
                     <group>                
-                        <field name="title"/>
-                        <field name="responsible"/>
+                        <field name="name"/>
+                        <field name="responsible_id"/>
                     </group>
                     <notebook>
-                        <page string="Description" name="description">
+                        <page string="Description">
                             <field name="description"/>
                         </page>
                         <page string="Sessions">
-                            <field name="sessions"/>
+                            <field name="session_ids"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -49,12 +49,12 @@
         <field name="model">open_academy.course</field>
         <field name="arch" type="xml">
             <search>
-                <field name="title"/>
+                <field name="name"/>
                 <field name="description"/>
-                <field name="responsible"/>
-                <filter name="responsible_filter" string="Responsible" domain="[('responsible', '=', uid)]"/>
+                <field name="responsible_id" string="Responsible"/>
+                <filter name="responsible_filter" string="Responsible" domain="[('responsible_id', '=', uid)]"/>
                 <group string="Group by">
-                    <filter name="group_by_responsible" string="Responsible" context="{'group_by': 'responsible'}"/>
+                    <filter name="group_by_responsible" string="Responsible" context="{'group_by': 'responsible_id'}"/>
                 </group>
             </search>
         </field>
