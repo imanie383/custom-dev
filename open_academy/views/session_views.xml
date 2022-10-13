@@ -2,7 +2,7 @@
     <record id="action_list_session" model="ir.actions.act_window">
         <field name="name">Sessions</field>
         <field name="res_model">open_academy.session</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar</field>
     </record>
 
     <menuitem id="session" parent="menu_root" name="Sessions" sequence="10" action="action_list_session"/>
@@ -10,7 +10,6 @@
     <record id="view_session_tree" model="ir.ui.view">
         <field name="name">view.session.tree</field>
         <field name="model">open_academy.session</field>
-        <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <tree name="session" decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
                 <field name="name"/>
@@ -23,7 +22,6 @@
     <record id="view_session_form" model="ir.ui.view">
         <field name="name">view.session.form</field>
         <field name="model">open_academy.session</field>
-        <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <form string="Session Form">
                 <sheet>
@@ -47,4 +45,13 @@
         </field>
     </record>
 
+    <record id="view_session_calendar" model="ir.ui.view">
+        <field name="name">view.session.calendar</field>
+        <field name="model">open_academy.session</field>
+        <field name="arch" type="xml">
+            <calendar date_start="start_date" color="course">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
 </odoo>
