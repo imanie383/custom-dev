@@ -6,4 +6,4 @@ class Partner(models.Model):
 
     instructor = fields.Boolean()
     session_ids = fields.Many2many('open_academy.session')
-    category = fields.Selection([('a', 'Teacher/Level 1'), ('b', 'Teacher/Level 2'),])
+    category = fields.Selection([('a', 'Teacher/Level 1'), ('b', 'Teacher/Level 2')])
