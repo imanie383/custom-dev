@@ -17,7 +17,7 @@
                     <group>
                         <field name="instructor"/>
                         <field name="category"/>
-                        <field name="sessions"/>
+                        <field name="session_ids"/>
                     </group>
                 </page>
             </xpath>
