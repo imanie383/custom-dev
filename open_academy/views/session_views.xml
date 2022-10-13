@@ -12,8 +12,9 @@
         <field name="model">open_academy.session</field>
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
-            <tree name="session">
+            <tree name="session" decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
                 <field name="name"/>
+                <field name="duration"/>
                 <field name="taken_seats" widget="progressbar"/>
             </tree>
         </field>
