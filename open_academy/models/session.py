@@ -13,10 +13,14 @@ class Session(models.Model):
 
     taken_seats = fields.Float(compute='_compute_taken_seats')
 
-    instructor_id = fields.Many2one('res.partner', domain="['|', ('instructor', '=', 'True'), ('category', '!=', False)]")
+    instructor_id = fields.Many2one(
+        'res.partner',
+        domain="['|', ('instructor', '=', 'True'), ('category', '!=', False)]")
     course_id = fields.Many2one('open_academy.course')
     attendee_ids = fields.Many2many('res.partner')
-    attendee_count = fields.Integer(compute='_compute_attendee_count', store=True, readonly=True)
+    attendee_count = fields.Integer(
+        compute='_compute_attendee_count',
+        store=True, readonly=True)
 
     @api.depends('seats', 'attendee_ids')
     def _compute_taken_seats(self):
@@ -46,4 +50,4 @@ class Session(models.Model):
     def _check_instructor(self):
         for record in self:
             if record.instructor_id in record.attendee_ids:
-                raise exceptions.ValidationError("Instructor %s is attendee in his/her own session" % record.instructor.name)
+                raise exceptions.ValidationError("Instructor is attendee in his/her own session")
