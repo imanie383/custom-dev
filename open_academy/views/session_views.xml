@@ -2,7 +2,7 @@
     <record id="action_list_session" model="ir.actions.act_window">
         <field name="name">Sessions</field>
         <field name="res_model">open_academy.session</field>
-        <field name="view_mode">tree,form,calendar</field>
+        <field name="view_mode">tree,form,calendar,gantt</field>
     </record>
 
     <menuitem id="session" parent="menu_root" name="Sessions" sequence="10" action="action_list_session"/>
@@ -52,6 +52,14 @@
             <calendar date_start="start_date" color="course">
                 <field name="name"/>
             </calendar>
+        </field>
+    </record>
+
+    <record id="view_session_gantt" model="ir.ui.view">
+        <field name="name">view.session.gantt</field>
+        <field name="model">open_academy.session</field>
+        <field name="arch" type="xml">
+            <gantt date_start="start_date" date_stop="start_date" default_group_by="instructor"/>
         </field>
     </record>
 </odoo>
