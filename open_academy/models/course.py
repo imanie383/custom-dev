@@ -13,7 +13,7 @@ class Course(models.Model):
     description = fields.Text()
 
     responsible_id = fields.Many2one('res.users')
-    session_ids = fields.One2many('open_academy.session', 'course')
+    session_ids = fields.One2many('open_academy.session', 'course_id')
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
