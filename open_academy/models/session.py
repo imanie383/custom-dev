@@ -16,6 +16,7 @@ class Session(models.Model):
     instructor = fields.Many2one('res.partner', domain="['|', ('instructor', '=', 'True'), ('category', '!=', False)]")
     course = fields.Many2one('open_academy.course')
     attendees = fields.Many2many('res.partner')
+    attendees_count = fields.Integer(compute='_compute_attendes_count', store=True, readonly=True)
 
     @api.depends('seats', 'attendees')
     def _compute_taken_seats(self):
@@ -27,6 +28,11 @@ class Session(models.Model):
             else:
                 percentage = (100 * attendees) / seats
             record.taken_seats = percentage
+
+    @api.depends('attendees')
+    def _compute_attendes_count(self):
+        for record in self:
+            record.attendees_count = len(record.attendees)
 
     @api.onchange('seats', 'attendees')
     def _onchange_seats(self):
