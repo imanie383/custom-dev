@@ -1,0 +1,30 @@
+<odoo>
+    <record id="categorie" model="ir.module.category">
+        <field name="name">Open Academy</field>
+    </record>
+
+    <record id="group_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" eval="categorie"/>
+    </record>
+
+    <record id="course_access" model="ir.model.access">
+        <field name="name">course.access</field>
+        <field name="model_id" ref="open_academy.model_open_academy_course"/>
+        <field name="group_id" eval="group_manager"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+    
+    <record id="session_access" model="ir.model.access">
+        <field name="name">session.access</field>
+        <field name="model_id" ref="open_academy.model_open_academy_session"/>
+        <field name="group_id" eval="group_manager"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+</odoo>
