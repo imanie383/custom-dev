@@ -23,6 +23,7 @@
 
     # always loaded
     'data': [
+        'security/open_academy_security.xml',
         'security/ir.model.access.csv',
         'views/course_views.xml',
         'views/session_views.xml',
