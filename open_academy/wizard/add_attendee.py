@@ -10,3 +10,7 @@ class AddAttendee(models.TransientModel):
 
     def _get_session_id(self):
         return self._context.get('active_id')
+
+    def add_attendee(self):
+        session = self.session_id
+        session.attendee_ids |= self.attendee_ids

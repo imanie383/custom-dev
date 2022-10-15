@@ -9,6 +9,10 @@
                         <field name="session_id"/>
                         <field name="attendee_ids"/>
                     </group>
+                    <footer>
+                        <button name="add_attendee" string="Register" type="object"/>
+                        <button string="Discard" special="cancel"/>
+                    </footer>
                 </sheet>
             </form>
         </field>
