@@ -6,7 +6,7 @@
             <form string="Add Attendees">
                 <sheet>
                     <group>
-                        <field name="session_id"/>
+                        <field name="session_ids"/>
                         <field name="attendee_ids"/>
                     </group>
                     <footer>
