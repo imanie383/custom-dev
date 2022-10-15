@@ -28,6 +28,7 @@
         'views/course_views.xml',
         'views/session_views.xml',
         'views/partner_views.xml',
+        'wizard/add_attendee_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
