@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_session_add_attendee_form" model="ir.ui.view">
+        <field name="name">view.session.add_attendee</field>
+        <field name="model">open_academy.session.add_attendee</field>
+        <field name="arch" type="xml">
+            <form string="Add Attendees">
+                <sheet>
+                    <group>
+                        <field name="session_id"/>
+                        <field name="attendee_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_session_add_attendee" model="ir.actions.act_window">
+        <field name="name">Add attendees</field>
+        <field name="res_model">open_academy.session.add_attendee</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="open_academy.model_open_academy_session"/>
+    </record>
+</odoo>
