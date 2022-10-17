@@ -1,4 +1,4 @@
-from odoo import models, fields, api, exceptions
+from odoo import models, fields, api, exceptions, _
 
 
 class Session(models.Model):
@@ -41,13 +41,13 @@ class Session(models.Model):
     @api.onchange('seats', 'attendee_ids')
     def _onchange_seats(self):
         if self.seats < 0:
-            return {'warning': {'title': 'Warning', 'message': 'Invalid number of seats'}}
+            return {'warning': {'title': _('Warning'), 'message': _('Invalid number of seats')}}
 
         if len(self.attendee_ids) > self.seats:
-            return {'warning': {'title': 'Warning', 'message': 'Insufficient seats'}}
+            return {'warning': {'title': _('Warning'), 'message': _('Insufficient seats')}}
 
     @api.constrains('instructor', 'attendee_ids')
     def _check_instructor(self):
         for record in self:
             if record.instructor_id in record.attendee_ids:
-                raise exceptions.ValidationError("Instructor is attendee in his/her own session")
+                raise exceptions.ValidationError(_("Instructor is attendee in his/her own session"))
