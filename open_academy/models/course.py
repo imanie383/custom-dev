@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class Course(models.Model):
@@ -17,7 +17,7 @@ class Course(models.Model):
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
-        new_default = {'name': "Copy of %s" % self.name}
+        new_default = {'name': _("Copy of %s") % self.name}
         if default is None:
             default = new_default
         else:
