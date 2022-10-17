@@ -11,7 +11,7 @@
         <field name="name">view.session.tree</field>
         <field name="model">open_academy.session</field>
         <field name="arch" type="xml">
-            <tree name="session" decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
+            <tree name="Session Tree" decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
                 <field name="name"/>
                 <field name="duration"/>
                 <field name="taken_seats" widget="progressbar"/>
@@ -23,15 +23,15 @@
         <field name="name">view.session.form</field>
         <field name="model">open_academy.session</field>
         <field name="arch" type="xml">
-            <form string="Session Form">
+            <form name="Session Form">
                 <sheet>
                     <group>
                         <field name="name"/>
                         <field name="active" groups="base.group_no_one"/>
-                        <field name="instructor_id" string="Instructor"/>
+                        <field name="instructor_id"/>
                         <field name="start_date"/>
                         <field name="duration"/>
-                        <field name="course_id" string="Course"/>
+                        <field name="course_id"/>
                         <field name="seats"/>
                         <field name="taken_seats" widget="progressbar"/>
                     </group>
