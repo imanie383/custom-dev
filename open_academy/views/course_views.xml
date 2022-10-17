@@ -13,10 +13,10 @@
         <field name="name">view.course.tree</field>
         <field name="model">open_academy.course</field>
         <field name="arch" type="xml">
-            <tree name="course">
+            <tree name="Course Tree">
                 <field name="name"/>
                 <field name="description"/>
-                <field name="responsible_id" string="Responsible"/>
+                <field name="responsible_id"/>
             </tree>
         </field>
     </record>
@@ -25,7 +25,7 @@
         <field name="name">view.course.form</field>
         <field name="model">open_academy.course</field>
         <field name="arch" type="xml">
-            <form string="Course Form">
+            <form name="Course Form">
                 <sheet>
                     <group>                
                         <field name="name"/>
@@ -51,7 +51,7 @@
             <search>
                 <field name="name"/>
                 <field name="description"/>
-                <field name="responsible_id" string="Responsible"/>
+                <field name="responsible_id"/>
                 <filter name="responsible_filter" string="Responsible" domain="[('responsible_id', '=', uid)]"/>
                 <group string="Group by">
                     <filter name="group_by_responsible" string="Responsible" context="{'group_by': 'responsible_id'}"/>
