@@ -3,7 +3,7 @@
         <field name="name">view.session.add_attendee</field>
         <field name="model">open_academy.session.add_attendee</field>
         <field name="arch" type="xml">
-            <form string="Add Attendees">
+            <form name="Add Attendees Form">
                 <sheet>
                     <group>
                         <field name="session_ids"/>
