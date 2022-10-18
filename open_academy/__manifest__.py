@@ -29,6 +29,8 @@
         'views/session_views.xml',
         'views/partner_views.xml',
         'wizard/add_attendee_views.xml',
+        'report/session_reports.xml',
+        'report/session_templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

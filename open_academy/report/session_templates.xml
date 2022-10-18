@@ -1,0 +1,28 @@
+<odoo>
+    <template id="report_session">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Session report</h2>
+                        <t t-sec="text">Session:</t>
+                        <t t-esc="o.name"/>
+                        <br/>
+                        <t t-sec="text">Start date:</t>
+                        <t t-esc="o.start_date"/>
+                        <br/>
+                        <t t-sec="text">End date:</t>
+                        <t t-esc="o.start_date + datetime.timedelta(days=int(o.duration))"/>
+                        <br/>
+                        <t t-sec="text">Attendees:</t>
+                        <ul>
+                            <li t-foreach="o.attendee_ids" t-as="attendee">
+                                <t t-esc="attendee.name"/>
+                            </li>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
