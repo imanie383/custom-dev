@@ -17,10 +17,15 @@ class Course(models.Model):
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
-        new_default = {'name': _("Copy of %s") % self.name}
-        if default is None:
-            default = new_default
+        count = self.search_count([
+            ('name', '=like', _('Copy of %s%%') % self.name)])
+        if not count:
+            new_name = _('Copy of %s') % self.name
         else:
-            default.update(new_default)
-        new = super(models.Model, self).copy(default)
-        return new
+            new_name = _('Copy of %s (%d)' % (self.name, count))
+
+        if default is None:
+            default = {}
+        default['name'] = new_name
+
+        return super(models.Model, self).copy(default)
