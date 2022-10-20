@@ -24,6 +24,15 @@
         <field name="model">open_academy.session</field>
         <field name="arch" type="xml">
             <form name="Session Form">
+                <header>
+                    <button name="action_draft" type="object" string="Mark as draft"
+                        attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                    <button name="action_confirm" type="object" string="Confirm"
+                        attrs="{'invisible': [('state', '=', 'confirmed')]}"/>
+                    <button name="action_done" type="object" string="Mark as done"
+                        attrs="{'invisible': [('state', '=', 'done')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -112,7 +121,7 @@
 
     <record id="view_session_dashboard" model="ir.ui.view">
         <field name="name">view.session.dashboard</field>
-        <field name="model">open_academy.session</field>
+        <field name="model">board.board</field>
         <field name="arch" type="xml">
             <form>
                 <board style="1">

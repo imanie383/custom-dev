@@ -10,13 +10,18 @@ class Session(models.Model):
     duration = fields.Float()
     seats = fields.Integer()
     active = fields.Boolean(default=True)
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('confirmed', 'Confirmed'),
+        ('done', 'Done'),
+        ], default='draft')
 
     taken_seats = fields.Float(compute='_compute_taken_seats')
 
     instructor_id = fields.Many2one(
-        'res.partner',
+        'res.partner', required=True,
         domain="['|', ('instructor', '=', 'True'), ('category', '!=', False)]")
-    course_id = fields.Many2one('open_academy.course')
+    course_id = fields.Many2one('open_academy.course', required=True)
     attendee_ids = fields.Many2many('res.partner')
     attendee_count = fields.Integer(
         compute='_compute_attendee_count',
@@ -46,8 +51,17 @@ class Session(models.Model):
         if len(self.attendee_ids) > self.seats:
             return {'warning': {'title': _('Warning'), 'message': _('Insufficient seats')}}
 
-    @api.constrains('instructor', 'attendee_ids')
+    @api.constrains('instructor_id', 'attendee_ids')
     def _check_instructor(self):
         for record in self:
             if record.instructor_id in record.attendee_ids:
                 raise exceptions.ValidationError(_("Instructor is attendee in his/her own session"))
+
+    def action_draft(self):
+        self.write({'state': 'draft'})
+
+    def action_confirm(self):
+        self.write({'state': 'confirmed'})
+
+    def action_done(self):
+        self.write({'state': 'done'})
